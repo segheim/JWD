@@ -9,6 +9,7 @@ public class SurfaceAreaTetrahedron {
     public double calculateSurfaceAreaTetrahedron(Tetrahedron tetrahedron){
         LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
         Map<String, Double> lengthsSides = lengthsSidesTetrahedron.calculateLengthsSidesTetrahedron(tetrahedron);
+
         double halfPerimeterABC = (lengthsSides.get("a") + lengthsSides.get("b") + lengthsSides.get("c"))/2;
         double surfaceAreaABC = Math.sqrt(halfPerimeterABC * (halfPerimeterABC - lengthsSides.get("a")) *
                 (halfPerimeterABC - lengthsSides.get("b")) * (halfPerimeterABC - lengthsSides.get("c")));
