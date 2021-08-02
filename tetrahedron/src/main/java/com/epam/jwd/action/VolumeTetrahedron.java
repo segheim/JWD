@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class VolumeTetrahedron {
 
-    public double calculateVolumeTetrahedron(Tetrahedron tetrahedron){
+    public static double calculateVolumeTetrahedron(Tetrahedron tetrahedron){
         LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
         Map<String, Double> lengthsSides = lengthsSidesTetrahedron.calculateLengthsSidesTetrahedron(tetrahedron);
 
