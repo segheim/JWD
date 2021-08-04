@@ -1,9 +1,6 @@
 package com.epam.jwd;
 
-import com.epam.jwd.action.CheckerBaseTetrahedronOnCoordinatePlane;
-import com.epam.jwd.action.CheckerTetrahedron;
-import com.epam.jwd.action.SurfaceAreaTetrahedron;
-import com.epam.jwd.action.VolumeTetrahedron;
+import com.epam.jwd.action.*;
 import com.epam.jwd.additional.CreatorDotsFromFile;
 import com.epam.jwd.entity.Tetrahedron;
 
@@ -27,6 +24,7 @@ public class App {
         CheckerBaseTetrahedronOnCoordinatePlane checkerBaseTetrahedronOnCoordinatePlane = new CheckerBaseTetrahedronOnCoordinatePlane();
         System.out.println(checkerBaseTetrahedronOnCoordinatePlane.isBaseTetrahedronOnCoordinatePlane(tetrahedron));
 
+        System.out.println(RatioVolumesShapesCrossedByCoordinatePlane.calculateRatioVolumesShapesCrossedByCoordinatePlane(tetrahedron));
 
     }
 }

@@ -7,17 +7,6 @@ public class Tetrahedron {
 
     private List<Dot> vertexDots;
 
-    private Dot dotA;
-    private Dot dotB;
-    private Dot dotC;
-    private Dot dotD;
-
-    public Tetrahedron(Dot dotA, Dot dotB, Dot dotC, Dot dotD){
-        this.dotA = dotA;
-        this.dotB = dotB;
-        this.dotC = dotC;
-        this.dotD = dotD;
-    }
     public Tetrahedron(List<Dot> vertexDots){
         this.vertexDots = vertexDots;
     }
