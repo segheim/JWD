@@ -2,13 +2,13 @@ package com.epam.jwd.validations;
 
 public class ValidationNumberIsDouble {
 
-    public boolean isDoubleDotData(String dotData){
-        try{
+    public static void isDoubleDotData(String[] dotData) {
 
-        }catch (NumberFormatException e){
-
+        for (int i = 0; i < dotData.length; i++) {
+            String[] dotCoordinates = dotData[i].replaceAll("[,;()]", " ").trim().split(" ");
+            for (String dotCoordinate : dotCoordinates) {
+                double checkDoubleDot = Double.parseDouble(dotCoordinate);
+            }
         }
-
-        return true;
     }
 }

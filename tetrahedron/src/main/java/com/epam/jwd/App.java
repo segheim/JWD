@@ -11,8 +11,8 @@ import com.epam.jwd.entity.Tetrahedron;
 import java.io.IOException;
 import java.util.List;
 
-public class App
-{
+public class App {
+
     public static void main( String[] args ) throws IOException {
 
         CreatorDotsFromFile creatorDotsFromFile = new CreatorDotsFromFile();

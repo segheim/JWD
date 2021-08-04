@@ -1,6 +1,9 @@
 package com.epam.jwd.additional;
 
+import com.epam.jwd.TetrahedronException;
 import com.epam.jwd.entity.Dot;
+import com.epam.jwd.validations.ValidationNumberIsDouble;
+import com.epam.jwd.validations.ValidationСompletenessData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,9 +23,11 @@ public class CreatorDotsFromFile {
             String[] dots = line.split(" ");
             System.out.println(Arrays.toString(dots));
             try {
-                for (int i = 0; i < dots.length; i++) {
+            ValidationСompletenessData.isCompletenessDataForDotsTetrahedron(dots);
+            ValidationСompletenessData.isCompletenessDataForCoordinatesDot(dots);
+            ValidationNumberIsDouble.isDoubleDotData(dots);
+            for (int i = 0; i < dots.length; i++) {
                     String[] dotCoordinates = dots[i].replaceAll("[,;()]", " ").trim().split(" ");
-
                     double x = Double.parseDouble(dotCoordinates[0]);
                     double y = Double.parseDouble(dotCoordinates[1]);
                     double z = Double.parseDouble(dotCoordinates[2]);
@@ -30,11 +35,11 @@ public class CreatorDotsFromFile {
                 }
             } catch (NumberFormatException e) {
                 System.err.println("In string invalid data!");
-            }catch (ArrayIndexOutOfBoundsException e){
+            } catch (TetrahedronException e) {
                 System.err.println("In string is not enough information!");
             }
             dotsTetrahedron = dotsForTetrahedron;
-            System.out.println(dotsTetrahedron.toString());
+            System.out.println(dotsTetrahedron);
         }
 
         return dotsTetrahedron;

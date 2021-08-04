@@ -1,13 +1,22 @@
 package com.epam.jwd.validations;
 
 import com.epam.jwd.TetrahedronException;
-import com.epam.jwd.entity.Tetrahedron;
 
 public class ValidationСompletenessData {
 
-    public static boolean isCompletenessData(String[] dotsData) throws TetrahedronException {
-        if (dotsData.length < 3 & dotsData.length > 3){
+    public static boolean isCompletenessDataForDotsTetrahedron(String[] dotsData) throws TetrahedronException {
+        if (dotsData.length != 4) {
             throw new TetrahedronException();
+        }
+        return true;
+    }
+
+    public static boolean isCompletenessDataForCoordinatesDot(String[] dotsData) throws TetrahedronException {
+        for (int i = 0; i < dotsData.length; i++) {
+            String[] dotCoordinates = dotsData[i].replaceAll("[,;()]", " ").trim().split(" ");
+            if (dotCoordinates.length != 3) {
+                throw new TetrahedronException();
+            }
         }
         return true;
     }

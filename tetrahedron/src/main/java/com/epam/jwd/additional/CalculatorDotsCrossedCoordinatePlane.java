@@ -1,13 +1,8 @@
 package com.epam.jwd.additional;
 
 import com.epam.jwd.entity.Dot;
-import com.epam.jwd.entity.Tetrahedron;
-
-import java.util.List;
 
 public class CalculatorDotsCrossedCoordinatePlane {
-
-
 
     public static Dot calculateDotsCrossedCoordinatePlaneX(Dot dot1, Dot dot2){
 
