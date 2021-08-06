@@ -19,8 +19,8 @@ public class App {
         System.out.println(surfaceAreaTetrahedron.calculateSurfaceAreaTetrahedron(tetrahedron));
         VolumeTetrahedron volumeTetrahedron = new VolumeTetrahedron();
         System.out.println(volumeTetrahedron.calculateVolumeTetrahedron(tetrahedron));
-        CheckerTetrahedron checkerTetrahedron = new CheckerTetrahedron();
-        System.out.println(checkerTetrahedron.isTetrahedron(tetrahedron));
+        CheckerTetrahedron checkerTetrahedron = new CheckerTetrahedron(tetrahedron);
+        System.out.println(checkerTetrahedron.isTetrahedron());
         CheckerBaseTetrahedronOnCoordinatePlane checkerBaseTetrahedronOnCoordinatePlane = new CheckerBaseTetrahedronOnCoordinatePlane();
         System.out.println(checkerBaseTetrahedronOnCoordinatePlane.isBaseTetrahedronOnCoordinatePlane(tetrahedron));
 

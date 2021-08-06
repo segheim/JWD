@@ -3,57 +3,59 @@ package com.epam.jwd.action;
 import com.epam.jwd.entity.Dot;
 import com.epam.jwd.entity.Tetrahedron;
 
-import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public class CheckerTetrahedron {
 
-    private boolean isBaseParallelPlaneY(List<Dot> vertexesTetrahedron) {
+    private List<Dot> dots;
+    private Tetrahedron tetrahedron;
 
-        return (vertexesTetrahedron.get(0).getX() == vertexesTetrahedron.get(1).getX()) &
-                (vertexesTetrahedron.get(0).getX() == vertexesTetrahedron.get(2).getX());
+    public CheckerTetrahedron(Tetrahedron tetrahedron){
+        this.dots = tetrahedron.getVertexDots();
+        this.tetrahedron = tetrahedron;
     }
 
-    private boolean isHeightParallelPlaneX(List<Dot> vertexesTetrahedron) {
-
-        return vertexesTetrahedron.get(0).getY() == vertexesTetrahedron.get(3).getY();
-    }
-
-    private boolean isTetrahedronHaveHeight(List<Dot> vertexesTetrahedron) {
-
-        return vertexesTetrahedron.get(3).getX() > vertexesTetrahedron.get(0).getX();
-    }
-
-    private boolean isBaseTriangle(List<Dot> vertexesTetrahedron) {
-
-        BigDecimal x = new BigDecimal(vertexesTetrahedron.get(2).getX());
-        BigDecimal x1 = new BigDecimal(vertexesTetrahedron.get(0).getX());
-        BigDecimal x2 = new BigDecimal(vertexesTetrahedron.get(1).getX());
-        BigDecimal y = new BigDecimal(vertexesTetrahedron.get(2).getY());
-        BigDecimal y1 = new BigDecimal(vertexesTetrahedron.get(0).getY());
-        BigDecimal y2 = new BigDecimal(vertexesTetrahedron.get(1).getY());
-        BigDecimal z = new BigDecimal(vertexesTetrahedron.get(2).getZ());
-        BigDecimal z1 = new BigDecimal(vertexesTetrahedron.get(0).getZ());
-        BigDecimal z2 = new BigDecimal(vertexesTetrahedron.get(1).getZ());
-
-        try {
-            if (((x.subtract(x1)).divide(x2.subtract(x1))).compareTo((z.subtract(z1)).divide(z2.subtract(z1))) != 0 &
-                    ((x.subtract(x1)).divide(x2.subtract(x1))).compareTo((y.subtract(y1)).divide(y2.subtract(y1))) != 0) {
-                return true;
-            }
-        } catch (ArithmeticException e) {
-
-        }
-        return false;
-    }
-
-    public boolean isTetrahedron(Tetrahedron tetrahedron){
-        List<Dot> dots = tetrahedron.getVertexDots();
-        if (isBaseParallelPlaneY(dots) & isBaseTriangle(dots) & isHeightParallelPlaneX(dots)
-                & isTetrahedronHaveHeight(dots)) {
+    public boolean isTetrahedron(){
+        if (isBaseParallelPlaneY() & isBaseTriangle() & isHeightParallelPlaneX()
+                & isTetrahedronHaveHeight()) {
             return true;
         }
 
+        return false;
+    }
+
+    public boolean isBaseTetrahedronOnCoordinatePlane(){
+
+        return ((dots.get(0).getX() == 0) && (dots.get(1).getX() == 0) && (dots.get(2).getX() == 0));
+    }
+
+    private boolean isBaseParallelPlaneY() {
+
+        return (dots.get(0).getX() == dots.get(1).getX()) &
+                (dots.get(0).getX() == dots.get(2).getX());
+    }
+
+    private boolean isHeightParallelPlaneX() {
+
+        return dots.get(0).getY() == dots.get(3).getY();
+    }
+
+    private boolean isTetrahedronHaveHeight() {
+
+        return dots.get(3).getX() > dots.get(0).getX();
+    }
+
+    private boolean isBaseTriangle() {
+
+        LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
+        Map<String, Double> lengthSides = lengthsSidesTetrahedron.calculateLengthsSidesTetrahedron(tetrahedron);
+        if ((lengthSides.get("a") + lengthSides.get("b") > lengthSides.get("c")) ||
+                (lengthSides.get("a") + lengthSides.get("c") > lengthSides.get("b")) ||
+                        (lengthSides.get("b") + lengthSides.get("c") > lengthSides.get("a"))){
+                    return true;
+
+        }
         return false;
     }
 }
