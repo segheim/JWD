@@ -12,21 +12,11 @@ public class LengthsSidesTetrahedron {
     public Map calculateLengthsSidesTetrahedron(Tetrahedron tetrahedron){
 
         List<Dot> dots = tetrahedron.getVertexDots();
-        double sideA = Math.abs(Math.sqrt(Math.pow(dots.get(1).getX() - dots.get(0).getX(), 2) +
-                Math.pow(dots.get(1).getY() - dots.get(0).getY(), 2) +
-                Math.pow(dots.get(1).getZ() - dots.get(0).getZ(), 2)));
-        double sideB = Math.abs(Math.sqrt(Math.pow(dots.get(2).getX() - dots.get(0).getX(), 2) +
-                Math.pow(dots.get(2).getY() - dots.get(0).getY(), 2) +
-                Math.pow(dots.get(2).getZ() - dots.get(0).getZ(), 2)));
-        double sideC = Math.abs(Math.sqrt(Math.pow(dots.get(2).getX() - dots.get(1).getX(), 2) +
-                Math.pow(dots.get(2).getY() - dots.get(1).getY(), 2) +
-                Math.pow(dots.get(2).getZ() - dots.get(1).getZ(), 2)));
-        double sideD = Math.abs(Math.sqrt(Math.pow(dots.get(3).getX() - dots.get(2).getX(), 2) +
-                Math.pow(dots.get(3).getY() - dots.get(2).getY(), 2) +
-                Math.pow(dots.get(3).getZ() - dots.get(2).getZ(), 2)));
-        double sideE = Math.abs(Math.sqrt(Math.pow(dots.get(3).getX() - dots.get(1).getX(), 2) +
-                Math.pow(dots.get(3).getY() - dots.get(1).getY(), 2) +
-                Math.pow(dots.get(3).getZ() - dots.get(1).getZ(), 2)));
+        double sideA = calculateSide(dots.get(0), dots.get(1));
+        double sideB = calculateSide(dots.get(0), dots.get(2));
+        double sideC = calculateSide(dots.get(1), dots.get(2));
+        double sideD = calculateSide(dots.get(2), dots.get(3));
+        double sideE = calculateSide(dots.get(1), dots.get(3));;
         double sideH = dots.get(3).getX() - dots.get(0).getX();
 
         Map<String, Double> lengthSides = new HashMap<>();
@@ -38,5 +28,12 @@ public class LengthsSidesTetrahedron {
         lengthSides.put("e", sideE);
 
         return lengthSides;
+    }
+
+    private double calculateSide(Dot dot1, Dot dot2){
+
+        return Math.abs(Math.sqrt(Math.pow(dot2.getX() - dot1.getX(), 2) +
+                Math.pow(dot2.getY() - dot1.getY(), 2) +
+                Math.pow(dot2.getZ() - dot1.getZ(), 2)));
     }
 }

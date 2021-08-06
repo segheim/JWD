@@ -9,24 +9,36 @@ public class SurfaceAreaTetrahedron {
     public double calculateSurfaceAreaTetrahedron(Tetrahedron tetrahedron){
         LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
         Map<String, Double> lengthsSides = lengthsSidesTetrahedron.calculateLengthsSidesTetrahedron(tetrahedron);
-        System.out.println(tetrahedron.toString());
-        double halfPerimeterABC = (lengthsSides.get("a") + lengthsSides.get("b") + lengthsSides.get("c"))/2;
-        double surfaceAreaABC = Math.sqrt(halfPerimeterABC * (halfPerimeterABC - lengthsSides.get("a")) *
-                (halfPerimeterABC - lengthsSides.get("b")) * (halfPerimeterABC - lengthsSides.get("c")));
 
-        double halfPerimeterCDE = (lengthsSides.get("c") + lengthsSides.get("d") + lengthsSides.get("e"))/2;
-        double surfaceAreaCDE = Math.sqrt(halfPerimeterCDE * (halfPerimeterCDE - lengthsSides.get("c")) *
-                (halfPerimeterCDE - lengthsSides.get("d")) * (halfPerimeterCDE - lengthsSides.get("e")));
+        double halfPerimeterABC = calculateHalfPerimeter(lengthsSides.get("a"), lengthsSides.get("b"),
+                lengthsSides.get("c"));
+        double surfaceAreaABC = calculateSurface(halfPerimeterABC, lengthsSides.get("a"), lengthsSides.get("b"),
+                lengthsSides.get("c"));
 
-        double halfPerimeterHBD = (lengthsSides.get("h") + lengthsSides.get("b") + lengthsSides.get("d"))/2;
-        double surfaceAreaHBD = Math.sqrt(halfPerimeterHBD * (halfPerimeterHBD - lengthsSides.get("h")) *
-                (halfPerimeterHBD - lengthsSides.get("b")) * (halfPerimeterHBD - lengthsSides.get("d")));
+        double halfPerimeterCDE = calculateHalfPerimeter(lengthsSides.get("c"), lengthsSides.get("d"),
+                lengthsSides.get("e"));
+        double surfaceAreaCDE = calculateSurface(halfPerimeterCDE, lengthsSides.get("c"), lengthsSides.get("d"),
+                lengthsSides.get("e"));
 
-        double halfPerimeterHAE = (lengthsSides.get("h") + lengthsSides.get("a") + lengthsSides.get("e"))/2;
-        double surfaceAreaHAE = Math.sqrt(halfPerimeterHAE * (halfPerimeterHAE - lengthsSides.get("h")) *
-                (halfPerimeterHAE - lengthsSides.get("a")) * (halfPerimeterHAE - lengthsSides.get("e")));
+        double halfPerimeterHBD = calculateHalfPerimeter(lengthsSides.get("h"), lengthsSides.get("b"), lengthsSides.get("d"));
+        double surfaceAreaHBD = calculateSurface(halfPerimeterHBD, lengthsSides.get("h"), lengthsSides.get("b"),
+                lengthsSides.get("d"));
+
+        double halfPerimeterHAE = calculateHalfPerimeter(lengthsSides.get("h"), lengthsSides.get("a"),
+                lengthsSides.get("e"));
+        double surfaceAreaHAE = calculateSurface(halfPerimeterHAE, lengthsSides.get("h"),lengthsSides.get("a"),
+                lengthsSides.get("e"));
 
         return surfaceAreaABC + surfaceAreaCDE + surfaceAreaHAE + surfaceAreaHBD;
+    }
+
+    private double calculateHalfPerimeter(double side1, double side2, double side3){
+        return (side1 + side2 + side3) / 2;
+    }
+
+    private double calculateSurface(double halfPerimeter, double side1, double side2, double side3){
+        return Math.sqrt(halfPerimeter * (halfPerimeter - side1) * (halfPerimeter - side2) *
+                (halfPerimeter - side3));
     }
 
 }
