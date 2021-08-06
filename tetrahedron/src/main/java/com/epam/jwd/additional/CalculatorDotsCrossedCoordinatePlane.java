@@ -6,49 +6,25 @@ public class CalculatorDotsCrossedCoordinatePlane {
 
     public static Dot calculateDotsCrossedCoordinatePlaneX(Dot dot1, Dot dot2){
 
-        double x1 = dot1.getX();
-        double x2 = dot2.getX();
-        double y1 = dot1.getY();
-        double y2 = dot2.getY();
-        double z1 = dot1.getZ();
-        double z2 = dot2.getZ();
-
         double x = 0;
-        double y = (- x1) * (y2 - y1) /(x2 - x1) + y1;
-        double z = (- x1) * (z2 - z1) /(x2 - x1) + z1;
+        double y = (- dot1.getX()) * (dot2.getY() - dot1.getY()) /(dot2.getX() - dot1.getX()) + dot1.getY();
+        double z = (- dot1.getX()) * (dot2.getZ() - dot1.getZ()) /(dot2.getX() - dot1.getX()) + dot1.getZ();
         return new Dot(x, y, z);
     }
 
     public static Dot calculateDotsCrossedCoordinatePlaneY(Dot dot1, Dot dot2){
 
-        double x1 = dot1.getX();
-        double x2 = dot2.getX();
-        double y1 = dot1.getY();
-        double y2 = dot2.getY();
-        double z1 = dot1.getZ();
-        double z2 = dot2.getZ();
-
-        double x = (- y1) * (x2 - x1) /(y2 - y1) + x1;
+        double x = (- dot1.getY()) * (dot2.getX() - dot1.getX()) /(dot2.getY() - dot1.getY()) + dot1.getX();
         double y = 0;
-        double z = (- y1) * (z2 - z1) /(y2 - y1) + z1;
+        double z = (- dot1.getY()) * (dot2.getZ() - dot1.getZ()) /(dot2.getY() - dot1.getY()) + dot1.getZ();
         return new Dot(x, y, z);
     }
 
     public static Dot calculateDotsCrossedCoordinatePlaneZ(Dot dot1, Dot dot2){
 
-        double x1 = dot1.getX();
-        double x2 = dot2.getX();
-        double y1 = dot1.getY();
-        double y2 = dot2.getY();
-        double z1 = dot1.getZ();
-        double z2 = dot2.getZ();
-
-        double x = (- z1) * (x2 - x1) /(z2 - z1) + x1;
-        double y = (- z1) * (y2 - y1) /(z2 - z1) + y1;
+        double x = (- dot1.getZ()) * (dot2.getX() - dot1.getX()) /(dot2.getZ() - dot1.getZ()) + dot1.getX();
+        double y = (- dot1.getZ()) * (dot2.getY() - dot1.getY()) /(dot2.getZ() - dot1.getZ()) + dot1.getY();
         double z = 0;
         return new Dot(x, y, z);
     }
-
-
-
 }

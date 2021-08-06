@@ -6,8 +6,13 @@ import com.epam.jwd.entity.Tetrahedron;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class RatioVolumesShapesCrossedByCoordinatePlane {
+
+    private static final Logger LOG = LogManager.getLogger(RatioVolumesShapesCrossedByCoordinatePlane.class.getName());
+
 
     public static double calculateRatioVolumesShapesCrossedByCoordinatePlane(Tetrahedron tetrahedron){
         List<Dot> dots = tetrahedron.getVertexDots();
@@ -19,6 +24,7 @@ public class RatioVolumesShapesCrossedByCoordinatePlane {
         } if (dots.get(2).getZ() > 0 & dots.get(0).getZ() < 0){
             ratioVolumesShapesCrossedByCoordinatePlane = crossedPlaneZ(tetrahedron);
         }
+        LOG.info("Ratio volumes shapes, when crossed coordinate plane: {}", ratioVolumesShapesCrossedByCoordinatePlane);
 
         return ratioVolumesShapesCrossedByCoordinatePlane;
     }

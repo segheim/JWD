@@ -31,9 +31,10 @@ public class LengthsSidesTetrahedron {
     }
 
     private double calculateSide(Dot dot1, Dot dot2){
-
-        return Math.abs(Math.sqrt(Math.pow(dot2.getX() - dot1.getX(), 2) +
+        double side = Math.abs(Math.sqrt(Math.pow(dot2.getX() - dot1.getX(), 2) +
                 Math.pow(dot2.getY() - dot1.getY(), 2) +
                 Math.pow(dot2.getZ() - dot1.getZ(), 2)));
+
+        return side;
     }
 }

@@ -1,8 +1,13 @@
 package com.epam.jwd.validations;
 
 import com.epam.jwd.TetrahedronException;
+import com.epam.jwd.additional.CreatorDotsFromFile;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Validation {
+    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+
     public static boolean validateData(String[] dotsData) throws TetrahedronException {
 
         if(isCoordinatesDot(dotsData) && isDotsTetrahedron(dotsData) && isDoubleDotData(dotsData)){
@@ -36,7 +41,7 @@ public class Validation {
                 try {
                     Double.parseDouble(dotCoordinate);
                 }catch (NumberFormatException e){
-                    System.err.println("In string invalid data!");
+                    LOG.error("In string invalid data!");
                     return false;
                 }
             }

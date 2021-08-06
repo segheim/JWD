@@ -3,13 +3,17 @@ package com.epam.jwd.additional;
 import com.epam.jwd.TetrahedronException;
 import com.epam.jwd.entity.Dot;
 import com.epam.jwd.validations.Validation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+
 public class CreatorDotsFromFile {
+
+    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
 
     public List createDotsFromFile() throws IOException {
 
@@ -20,7 +24,6 @@ public class CreatorDotsFromFile {
         for (String line : lines) {
             List dotsForTetrahedron = new ArrayList<>();
             String[] dots = line.split(" ");
-            System.out.println(Arrays.toString(dots));
             try {
                 if(Validation.validateData(dots)){
                     for (int i = 0; i < dots.length; i++) {
@@ -32,10 +35,10 @@ public class CreatorDotsFromFile {
                     }
                 }
             } catch (TetrahedronException e) {
-                System.err.println("In string is not enough information!");
+                LOG.error("In string is not enough information");
             }
             dotsTetrahedron = dotsForTetrahedron;
-            System.out.println(dotsTetrahedron);
+            LOG.info("Tetrahedron's dots: {}",dotsTetrahedron);
         }
 
         return dotsTetrahedron;

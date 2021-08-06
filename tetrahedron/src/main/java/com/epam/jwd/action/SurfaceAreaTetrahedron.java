@@ -1,10 +1,14 @@
 package com.epam.jwd.action;
 
 import com.epam.jwd.entity.Tetrahedron;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
 public class SurfaceAreaTetrahedron {
+    private static final Logger LOG = LogManager.getLogger(SurfaceAreaTetrahedron.class.getName());
+
 
     public double calculateSurfaceAreaTetrahedron(Tetrahedron tetrahedron){
         LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
@@ -28,8 +32,10 @@ public class SurfaceAreaTetrahedron {
                 lengthsSides.get("e"));
         double surfaceAreaHAE = calculateSurface(halfPerimeterHAE, lengthsSides.get("h"),lengthsSides.get("a"),
                 lengthsSides.get("e"));
+        double surfaceArea = surfaceAreaABC + surfaceAreaCDE + surfaceAreaHAE + surfaceAreaHBD;
+        LOG.info("Surface area tetrahedron: {}", surfaceArea);
 
-        return surfaceAreaABC + surfaceAreaCDE + surfaceAreaHAE + surfaceAreaHBD;
+        return surfaceArea;
     }
 
     private double calculateHalfPerimeter(double side1, double side2, double side3){

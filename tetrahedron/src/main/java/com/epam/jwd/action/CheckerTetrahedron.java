@@ -35,13 +35,10 @@ public class CheckerTetrahedron {
         BigDecimal z = new BigDecimal(vertexesTetrahedron.get(2).getZ());
         BigDecimal z1 = new BigDecimal(vertexesTetrahedron.get(0).getZ());
         BigDecimal z2 = new BigDecimal(vertexesTetrahedron.get(1).getZ());
-        System.out.println(x + " " + x1 + " " + x2 + " " + y + " " + y1 + " " + y2 + " " + z + " " + z1 + " " + z2);
 
         try {
-            boolean b = ((x.subtract(x1)).divide(x2.subtract(x1))).compareTo((z.subtract(z1)).divide(z2.subtract(z1))) != 0;
-            boolean c = ((x.subtract(x1)).divide(x2.subtract(x1))).compareTo((y.subtract(y1)).divide(y2.subtract(y1))) != 0;
-
-            if (c & b) {
+            if (((x.subtract(x1)).divide(x2.subtract(x1))).compareTo((z.subtract(z1)).divide(z2.subtract(z1))) != 0 &
+                    ((x.subtract(x1)).divide(x2.subtract(x1))).compareTo((y.subtract(y1)).divide(y2.subtract(y1))) != 0) {
                 return true;
             }
         } catch (ArithmeticException e) {
