@@ -13,7 +13,6 @@ public class RatioVolumesShapesCrossedByCoordinatePlane {
 
     private static final Logger LOG = LogManager.getLogger(RatioVolumesShapesCrossedByCoordinatePlane.class.getName());
 
-
     public static double calculateRatioVolumesShapesCrossedByCoordinatePlane(Tetrahedron tetrahedron){
         List<Dot> dots = tetrahedron.getVertexDots();
         double ratioVolumesShapesCrossedByCoordinatePlane = 0;
@@ -29,7 +28,7 @@ public class RatioVolumesShapesCrossedByCoordinatePlane {
         return ratioVolumesShapesCrossedByCoordinatePlane;
     }
 
-    private static double crossedPlaneX(Tetrahedron tetrahedron){
+    public static double crossedPlaneX(Tetrahedron tetrahedron){
         double ratioVolumesShapesCrossedByCoordinatePlaneX = 0;
         List<Dot> dots = tetrahedron.getVertexDots();
 
@@ -49,7 +48,7 @@ public class RatioVolumesShapesCrossedByCoordinatePlane {
         return ratioVolumesShapesCrossedByCoordinatePlaneX;
     }
 
-    private static double crossedPlaneY(Tetrahedron tetrahedron){
+    public static double crossedPlaneY(Tetrahedron tetrahedron){
         double ratioVolumesShapesCrossedByCoordinatePlaneY = 0;
         List<Dot> dots = tetrahedron.getVertexDots();
             Dot dotABaseTetrahedron = CalculatorDotsCrossedCoordinatePlane.calculateDotsCrossedCoordinatePlaneY(dots.get(1), dots.get(0));
@@ -68,7 +67,7 @@ public class RatioVolumesShapesCrossedByCoordinatePlane {
         return ratioVolumesShapesCrossedByCoordinatePlaneY;
     }
 
-    private static double crossedPlaneZ(Tetrahedron tetrahedron){
+    public static double crossedPlaneZ(Tetrahedron tetrahedron){
         double ratioVolumesShapesCrossedByCoordinatePlaneZ = 0;
         List<Dot> dots = tetrahedron.getVertexDots();
             Dot dotABaseTetrahedron = CalculatorDotsCrossedCoordinatePlane.calculateDotsCrossedCoordinatePlaneZ(dots.get(2), dots.get(0));

@@ -21,9 +21,7 @@ public class App {
         System.out.println(volumeTetrahedron.calculateVolumeTetrahedron(tetrahedron));
         CheckerTetrahedron checkerTetrahedron = new CheckerTetrahedron(tetrahedron);
         System.out.println(checkerTetrahedron.isTetrahedron());
-        CheckerBaseTetrahedronOnCoordinatePlane checkerBaseTetrahedronOnCoordinatePlane = new CheckerBaseTetrahedronOnCoordinatePlane();
-        System.out.println(checkerBaseTetrahedronOnCoordinatePlane.isBaseTetrahedronOnCoordinatePlane(tetrahedron));
-
+        System.out.println(checkerTetrahedron.isBaseTetrahedronOnCoordinatePlane());
         System.out.println(RatioVolumesShapesCrossedByCoordinatePlane.calculateRatioVolumesShapesCrossedByCoordinatePlane(tetrahedron));
 
     }

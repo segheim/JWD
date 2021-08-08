@@ -1,11 +1,15 @@
 package com.epam.jwd.additional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReaderFileWithDots {
 
+    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
     File file = new File("data/info.txt");
 
     public List toReadFileWithDots() throws IOException {
@@ -18,7 +22,7 @@ public class ReaderFileWithDots {
                 stringBuilder.append(line).append("\n");
             }
         } catch(FileNotFoundException e){
-            e.printStackTrace();
+            LOG.error("File for read not found!");
         }
 
         return lines;
