@@ -1,6 +1,6 @@
 package com.epam.jwd.validations;
 
-import com.epam.jwd.TetrahedronException;
+import com.epam.jwd.exception.TetrahedronException;
 import com.epam.jwd.additional.CreatorDotsFromFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

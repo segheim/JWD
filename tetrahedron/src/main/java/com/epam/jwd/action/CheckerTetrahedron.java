@@ -29,9 +29,9 @@ public class CheckerTetrahedron {
         BigDecimal dot1 = new BigDecimal(dots.get(0).getX());
         BigDecimal dot2 = new BigDecimal(dots.get(1).getX());
         BigDecimal dot3 = new BigDecimal(dots.get(2).getX());
-        BigDecimal dot0 = new BigDecimal(0);
 
-        return (dot1.compareTo(dot0) == 0) && (dot2.compareTo(dot0) == 0) && (dot3.compareTo(dot0) == 0);
+        return (dot1.compareTo(dot2) == 0) && (dot1.compareTo(dot3) == 0) && (dot2.compareTo(dot3) == 0);
+
     }
 
     public boolean isBaseParallelPlaneY() {

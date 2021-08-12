@@ -1,7 +1,5 @@
-package com.epam.jwd;
+package com.epam.jwd.action;
 
-import com.epam.jwd.action.CheckerTetrahedron;
-import com.epam.jwd.action.VolumeTetrahedron;
 import com.epam.jwd.entity.Dot;
 import com.epam.jwd.entity.Tetrahedron;
 import org.testng.annotations.BeforeClass;
@@ -36,8 +34,8 @@ public class VolumeTetrahedronTest {
         dots1 = new ArrayList();
         dots1.add(new Dot(0,2, 3));
         dots1.add(new Dot(0,8, 3));
-        dots1.add(new Dot(0,-3, 6));
-        dots1.add(new Dot(10,-3, 3));
+        dots1.add(new Dot(0,2, 6));
+        dots1.add(new Dot(10,2, 3));
         tetrahedron1 = new Tetrahedron(dots1);
 
         dots2 = new ArrayList();
@@ -56,15 +54,15 @@ public class VolumeTetrahedronTest {
     }
 
     @Test(dataProvider = "DataCheckVolumeTetrahedron")
-    public void calculateVolumeTetrahedron(double actual, Tetrahedron tetrahedron) {
-        double expected = VolumeTetrahedron.calculateVolumeTetrahedron(tetrahedron);
+    public void calculateVolumeTetrahedronTest(int actual, Tetrahedron tetrahedron) {
+        int expected = (int) Math.round(VolumeTetrahedron.calculateVolumeTetrahedron(tetrahedron));
         assertEquals(actual, expected);
     }
 
     @DataProvider(name = "DataCheckVolumeTetrahedron")
-    public Object[][] checkTetrahedronTest(){
-        return new Object[][]{{27.5, tetrahedron},
-                                {58, tetrahedron1},
+    public Object[][] checkVolumeTest(){
+        return new Object[][]{{28, tetrahedron},
+                                {30, tetrahedron1},
                                 {21, tetrahedron2},
                                 {55, tetrahedron3}
         };

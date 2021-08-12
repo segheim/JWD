@@ -17,7 +17,7 @@ public class LengthsSidesTetrahedron {
         double sideC = calculateSide(dots.get(1), dots.get(2));
         double sideD = calculateSide(dots.get(2), dots.get(3));
         double sideE = calculateSide(dots.get(1), dots.get(3));;
-        double sideH = dots.get(3).getX() - dots.get(0).getX();
+        double sideH = calculateSide(dots.get(0), dots.get(3));
 
         Map<String, Double> lengthSides = new HashMap<>();
         lengthSides.put("a", sideA);

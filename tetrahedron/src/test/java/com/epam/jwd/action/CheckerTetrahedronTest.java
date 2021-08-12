@@ -1,8 +1,7 @@
-package com.epam.jwd;
+package com.epam.jwd.action;
 
 import static org.testng.Assert.*;
 
-import com.epam.jwd.action.CheckerTetrahedron;
 import com.epam.jwd.entity.Dot;
 import com.epam.jwd.entity.Tetrahedron;
 import org.testng.annotations.*;
@@ -17,6 +16,7 @@ public class CheckerTetrahedronTest {
     private List<Dot> dots1;
     private List<Dot> dots2;
     private List<Dot> dots3;
+    private List<Dot> dots4;
     private Tetrahedron tetrahedron;
     private CheckerTetrahedron checkerTetrahedron;
 
@@ -33,8 +33,8 @@ public class CheckerTetrahedronTest {
         dots1 = new ArrayList();
         dots1.add(new Dot(0,2, 3));
         dots1.add(new Dot(0,8, 3));
-        dots1.add(new Dot(0,-3, 6));
-        dots1.add(new Dot(10,-3, 3));
+        dots1.add(new Dot(0,2, 6));
+        dots1.add(new Dot(10,2, 3));
 
         dots2 = new ArrayList();
         dots2.add(new Dot(-3,2, 2));
@@ -47,6 +47,12 @@ public class CheckerTetrahedronTest {
         dots3.add(new Dot(2,8, -5));
         dots3.add(new Dot(2,3, 6));
         dots3.add(new Dot(8,3, -5));
+
+        dots4 = new ArrayList();
+        dots4.add(new Dot(0,3, -5));
+        dots4.add(new Dot(0,8, -5));
+        dots4.add(new Dot(0,3, 6));
+        dots4.add(new Dot(8,3, -5));
     }
 
     @Test(dataProvider = "DataCheckTetrahedronOnCoordinatePlane")
@@ -89,6 +95,8 @@ public class CheckerTetrahedronTest {
 
     @DataProvider(name = "DataCheckTetrahedronOnCoordinatePlane")
     public Object[][] checkTetrahedronOnCoordinatePlaneTest(){
-        return (Object[][]) new Object[]{true, dots1};
+        return new Object[][]{{true, dots1},
+                {true, dots4}
+        };
     }
 }

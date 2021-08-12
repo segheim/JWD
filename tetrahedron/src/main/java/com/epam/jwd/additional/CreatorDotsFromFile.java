@@ -1,6 +1,6 @@
 package com.epam.jwd.additional;
 
-import com.epam.jwd.TetrahedronException;
+import com.epam.jwd.exception.TetrahedronException;
 import com.epam.jwd.entity.Dot;
 import com.epam.jwd.validations.Validation;
 import org.apache.logging.log4j.LogManager;
@@ -36,6 +36,7 @@ public class CreatorDotsFromFile {
                 }
             } catch (TetrahedronException e) {
                 LOG.error("In string is not enough information");
+
             }
             dotsTetrahedron = dotsForTetrahedron;
             LOG.info("Tetrahedron's dots: {}",dotsTetrahedron);
