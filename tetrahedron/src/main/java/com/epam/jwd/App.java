@@ -2,6 +2,7 @@ package com.epam.jwd;
 
 import com.epam.jwd.action.*;
 import com.epam.jwd.additional.CreatorDotsFromFile;
+import com.epam.jwd.additional.HolderTetrahedron;
 import com.epam.jwd.entity.Tetrahedron;
 
 
@@ -19,7 +20,7 @@ public class App {
         System.out.println(surfaceAreaTetrahedron.calculateSurfaceAreaTetrahedron(tetrahedron));
         VolumeTetrahedron volumeTetrahedron = new VolumeTetrahedron();
         System.out.println(volumeTetrahedron.calculateVolumeTetrahedron(tetrahedron));
-        CheckerTetrahedron checkerTetrahedron = new CheckerTetrahedron(tetrahedron);
+        HolderTetrahedron holderTetrahedron = new HolderTetrahedron();
 
 
     }

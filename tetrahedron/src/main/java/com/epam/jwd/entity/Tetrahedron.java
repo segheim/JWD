@@ -3,16 +3,20 @@ package com.epam.jwd.entity;
 import java.util.List;
 import java.util.Objects;
 
-public class Tetrahedron {
+public class Tetrahedron implements ShapeTetrahedron {
 
     private List<Dot> vertexDots;
 
-    public Tetrahedron(List<Dot> vertexDots){
+    public Tetrahedron(List<Dot> vertexDots) {
         this.vertexDots = vertexDots;
     }
 
     public List<Dot> getVertexDots() {
         return vertexDots;
+    }
+
+    public void setVertexDots(List<Dot> vertexDots) {
+        this.vertexDots = vertexDots;
     }
 
     @Override
