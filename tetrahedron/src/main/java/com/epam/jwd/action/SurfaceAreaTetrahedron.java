@@ -10,7 +10,7 @@ public class SurfaceAreaTetrahedron {
     private static final Logger LOG = LogManager.getLogger(SurfaceAreaTetrahedron.class.getName());
 
 
-    public static double calculateSurfaceAreaTetrahedron(Tetrahedron tetrahedron){
+    public double calculateSurfaceAreaTetrahedron(Tetrahedron tetrahedron){
         LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
         Map<String, Double> lengthsSides = lengthsSidesTetrahedron.calculateLengthsSidesTetrahedron(tetrahedron);
 
@@ -38,11 +38,11 @@ public class SurfaceAreaTetrahedron {
         return surfaceArea;
     }
 
-    private static double calculateHalfPerimeter(double side1, double side2, double side3){
+    private double calculateHalfPerimeter(double side1, double side2, double side3){
         return (side1 + side2 + side3) / 2;
     }
 
-    private static double calculateSurface(double halfPerimeter, double side1, double side2, double side3){
+    private double calculateSurface(double halfPerimeter, double side1, double side2, double side3){
         return Math.sqrt(halfPerimeter * (halfPerimeter - side1) * (halfPerimeter - side2) *
                 (halfPerimeter - side3));
     }

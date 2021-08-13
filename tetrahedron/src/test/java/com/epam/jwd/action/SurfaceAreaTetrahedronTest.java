@@ -21,9 +21,13 @@ public class SurfaceAreaTetrahedronTest {
     private Tetrahedron tetrahedron1;
     private Tetrahedron tetrahedron2;
     private Tetrahedron tetrahedron3;
+    SurfaceAreaTetrahedron surfaceArea;
 
     @BeforeClass
     public void init() {
+
+        surfaceArea = new SurfaceAreaTetrahedron();
+
         dots = new ArrayList();
         dots.add(new Dot(5,-3, 3));
         dots.add(new Dot(5,8, 3));
@@ -55,7 +59,7 @@ public class SurfaceAreaTetrahedronTest {
 
     @Test(dataProvider = "DataCheckSurfaceAreaTetrahedron")
     public void calculateSurfaceAreaTetrahedronTest(int actual, Tetrahedron tetrahedron) {
-        int expected = (int) Math.round(SurfaceAreaTetrahedron.calculateSurfaceAreaTetrahedron(tetrahedron));
+        int expected = (int) Math.round(surfaceArea.calculateSurfaceAreaTetrahedron(tetrahedron));
         assertEquals(actual, expected);
     }
 

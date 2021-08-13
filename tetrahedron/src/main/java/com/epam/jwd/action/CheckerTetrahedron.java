@@ -34,23 +34,23 @@ public class CheckerTetrahedron {
 
     }
 
-    public boolean isBaseParallelPlaneY() {
+    private boolean isBaseParallelPlaneY() {
 
         return (dots.get(0).getX() == dots.get(1).getX()) &&
                 (dots.get(0).getX() == dots.get(2).getX());
     }
 
-    public boolean isHeightParallelPlaneX() {
+    private boolean isHeightParallelPlaneX() {
 
         return dots.get(0).getY() == dots.get(3).getY();
     }
 
-    public boolean isTetrahedronHaveHeight() {
+    private boolean isTetrahedronHaveHeight() {
 
         return dots.get(3).getX() > dots.get(0).getX();
     }
 
-    public boolean isBaseTriangle() {
+    private boolean isBaseTriangle() {
 
         LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
         Map<String, Double> lengthSides = lengthsSidesTetrahedron.calculateLengthsSidesTetrahedron(tetrahedron);

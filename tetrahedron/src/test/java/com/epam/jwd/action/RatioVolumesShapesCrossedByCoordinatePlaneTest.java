@@ -21,6 +21,7 @@ public class RatioVolumesShapesCrossedByCoordinatePlaneTest {
     private Tetrahedron tetrahedron1;
     private Tetrahedron tetrahedron2;
     private Tetrahedron tetrahedron3;
+    RatioVolumesShapesCrossedByCoordinatePlane ratioVolumes;
 
     @BeforeClass
     public void init() {
@@ -30,6 +31,7 @@ public class RatioVolumesShapesCrossedByCoordinatePlaneTest {
         dots.add(new Dot(5,-3, 6));
         dots.add(new Dot(10,-3, 3));
         tetrahedron = new Tetrahedron(dots);
+        ratioVolumes = new RatioVolumesShapesCrossedByCoordinatePlane();
 
         dots1 = new ArrayList();
         dots1.add(new Dot(0,2, 3));
@@ -55,7 +57,7 @@ public class RatioVolumesShapesCrossedByCoordinatePlaneTest {
 
     @Test(dataProvider = "DataCheckRationTetrahedron")
     public void calculateRatioVolumesShapesCrossedByCoordinatePlaneTest(int actual, Tetrahedron tetrahedron) {
-        int expected = (int) Math.round(RatioVolumesShapesCrossedByCoordinatePlane.calculateRatioVolumesShapesCrossedByCoordinatePlane(tetrahedron));
+        int expected = (int) Math.round(ratioVolumes.calculateRatioVolumesShapesCrossedByCoordinatePlane(tetrahedron));
         assertEquals(actual, expected);
     }
 

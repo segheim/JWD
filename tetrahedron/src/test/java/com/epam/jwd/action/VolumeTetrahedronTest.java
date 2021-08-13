@@ -21,9 +21,13 @@ public class VolumeTetrahedronTest {
     private Tetrahedron tetrahedron1;
     private Tetrahedron tetrahedron2;
     private Tetrahedron tetrahedron3;
+    private VolumeTetrahedron volumeTetrahedron;
 
     @BeforeClass
     public void init() {
+
+        volumeTetrahedron = new VolumeTetrahedron();
+
         dots = new ArrayList();
         dots.add(new Dot(5,-3, 3));
         dots.add(new Dot(5,8, 3));
@@ -55,7 +59,7 @@ public class VolumeTetrahedronTest {
 
     @Test(dataProvider = "DataCheckVolumeTetrahedron")
     public void calculateVolumeTetrahedronTest(int actual, Tetrahedron tetrahedron) {
-        int expected = (int) Math.round(VolumeTetrahedron.calculateVolumeTetrahedron(tetrahedron));
+        int expected = (int) Math.round(volumeTetrahedron.calculateVolumeTetrahedron(tetrahedron));
         assertEquals(actual, expected);
     }
 

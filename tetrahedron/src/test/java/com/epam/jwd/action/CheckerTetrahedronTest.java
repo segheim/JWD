@@ -62,26 +62,8 @@ public class CheckerTetrahedronTest {
     }
 
     @Test(dataProvider = "DataCheckTetrahedron")
-    public void isBaseParallelPlaneYTest(boolean actual, List<Dot> dots) {
-        boolean expected = checkerTetrahedron.isBaseParallelPlaneY();
-        assertEquals(actual, expected);
-    }
-
-    @Test(dataProvider = "DataCheckTetrahedron")
-    public void isHeightParallelPlaneXTest(boolean actual, List<Dot> dots) {
-        boolean expected = checkerTetrahedron.isHeightParallelPlaneX();
-        assertEquals(actual, expected);
-    }
-
-    @Test(dataProvider = "DataCheckTetrahedron")
-    public void isTetrahedronHaveHeightTest(boolean actual, List<Dot> dots) {
-        boolean expected = checkerTetrahedron.isTetrahedronHaveHeight();
-        assertEquals(actual, expected);
-    }
-
-    @Test(dataProvider = "DataCheckTetrahedron")
-    public void isBaseTriangleTest(boolean actual, List<Dot> dots) {
-        boolean expected = checkerTetrahedron.isBaseTriangle();
+    public void isTetrahedronTest(boolean actual, List<Dot> dots) {
+        boolean expected = checkerTetrahedron.isTetrahedron();
         assertEquals(actual, expected);
     }
 
@@ -89,7 +71,8 @@ public class CheckerTetrahedronTest {
     public Object[][] checkTetrahedronTest(){
         return new Object[][]{{true, dots},
                 {true, dots1},
-                {true, dots2}
+                {true, dots2},
+                {true, dots3}
         };
     }
 

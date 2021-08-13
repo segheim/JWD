@@ -10,7 +10,7 @@ public class VolumeTetrahedron {
 
     private static final Logger LOG = LogManager.getLogger(VolumeTetrahedron.class.getName());
 
-    public static double calculateVolumeTetrahedron(Tetrahedron tetrahedron){
+    public double calculateVolumeTetrahedron(Tetrahedron tetrahedron){
         LengthsSidesTetrahedron lengthsSidesTetrahedron = new LengthsSidesTetrahedron();
         Map<String, Double> lengthsSides = lengthsSidesTetrahedron.calculateLengthsSidesTetrahedron(tetrahedron);
         double volumeTetrahedron = (lengthsSides.get("a") * lengthsSides.get("b") * lengthsSides.get("h")) / 6;
