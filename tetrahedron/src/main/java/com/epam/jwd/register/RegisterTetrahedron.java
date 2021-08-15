@@ -2,33 +2,44 @@ package com.epam.jwd.register;
 
 import com.epam.jwd.action.SurfaceAreaTetrahedron;
 import com.epam.jwd.action.VolumeTetrahedron;
+import com.epam.jwd.additional.CreatorDotsFromFile;
 import com.epam.jwd.entity.ShapeTetrahedron;
 import com.epam.jwd.entity.Tetrahedron;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RegisterTetrahedron implements Observer{
+public class RegisterTetrahedron implements Observer<Tetrahedron>{
 
-    Integer indexTetrahedron = 0;
+    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+
+    private static RegisterTetrahedron registerTetrahedron;
     private Map<Integer, List<Double>> register;
 
 
-    public RegisterTetrahedron() {
+    private RegisterTetrahedron() {
         this.register = new HashMap<>();
     }
 
-
-    @Override
-    public void handleEvent(ShapeTetrahedron tetrahedron) {
-        register.put(indexTetrahedron, calculateParameters(tetrahedron));
+    public static RegisterTetrahedron getRegisterTetrahedron(){
+        if (registerTetrahedron == null) {
+            registerTetrahedron = new RegisterTetrahedron();
+        }
+        return registerTetrahedron;
     }
 
-    public Integer addTetrahedron(Tetrahedron tetrahedron) {
-        register.put(++indexTetrahedron, calculateParameters(tetrahedron));
-        return indexTetrahedron;
+    @Override
+    public void handleEvent(Tetrahedron tetrahedron) {
+        register.replace(tetrahedron.getTetrahedronId(), calculateParameters(tetrahedron));
+        LOG.info("Changed tetrahedron's parameters with id={} on {}", tetrahedron.getTetrahedronId(), calculateParameters(tetrahedron));
+    }
+
+    public void addTetrahedron(Tetrahedron tetrahedron) {
+        register.put(tetrahedron.getTetrahedronId(), calculateParameters(tetrahedron));
     }
 
     private List<Double> calculateParameters(ShapeTetrahedron tetrahedron) {
@@ -44,5 +55,9 @@ public class RegisterTetrahedron implements Observer{
         parameters.add(volume);
 
         return parameters;
+    }
+
+    public Map<Integer, List<Double>> getRegister() {
+        return register;
     }
 }

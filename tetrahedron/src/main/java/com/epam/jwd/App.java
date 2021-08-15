@@ -2,7 +2,10 @@ package com.epam.jwd;
 
 import com.epam.jwd.additional.CreatorDotsFromFile;
 import com.epam.jwd.additional.CreatorTetrahedron;
+import com.epam.jwd.entity.Dot;
 import com.epam.jwd.entity.Tetrahedron;
+import com.epam.jwd.register.ChangerCoordinatesTetrahedron;
+import com.epam.jwd.register.RegisterTetrahedron;
 import com.epam.jwd.repository.Repository;
 import com.epam.jwd.repository.TetrahedronRepository;
 
@@ -22,18 +25,16 @@ public class App {
         List dot = creatorDotsFromFile.getDotsForTetrahedrons();
         System.out.println(dot.toString());
 
-
         CreatorTetrahedron creatorTetrahedron = new CreatorTetrahedron(creatorDotsFromFile);
-
-
         TetrahedronRepository.getTetrahedronRepository().sortById();
 
+        System.out.println(RegisterTetrahedron.getRegisterTetrahedron().getRegister());
 
-        TetrahedronRepository.getTetrahedronRepository().sortByCoordinateXFirstDot();
-        System.out.println(TetrahedronRepository.getTetrahedronRepository().getTetrahedronList());
-
-        TetrahedronRepository.getTetrahedronRepository().sortByCoordinateYFirstDot();
-        System.out.println(TetrahedronRepository.getTetrahedronRepository().getTetrahedronList());
+        ChangerCoordinatesTetrahedron changerCoordinatesTetrahedron = new ChangerCoordinatesTetrahedron();
+        changerCoordinatesTetrahedron.addRegister(RegisterTetrahedron.getRegisterTetrahedron());
+        changerCoordinatesTetrahedron.changeCoordinatesTetrahedronInRepository(2,
+                3, new Dot(2, 10, -10));
+        System.out.println(RegisterTetrahedron.getRegisterTetrahedron().getRegister());
 
 
     }

@@ -2,6 +2,7 @@ package com.epam.jwd.additional;
 
 import com.epam.jwd.entity.Dot;
 import com.epam.jwd.entity.Tetrahedron;
+import com.epam.jwd.register.RegisterTetrahedron;
 import com.epam.jwd.repository.TetrahedronRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +24,7 @@ public class CreatorTetrahedron {
             Tetrahedron tetrahedron = new Tetrahedron((List<Dot>) dot);
             tetrahedrons.add(tetrahedron);
             TetrahedronRepository.getTetrahedronRepository().create(tetrahedron);
+            RegisterTetrahedron.getRegisterTetrahedron().addTetrahedron(tetrahedron);
         }
         LOG.info("List tetrahedrons: {}", tetrahedrons);
     }
