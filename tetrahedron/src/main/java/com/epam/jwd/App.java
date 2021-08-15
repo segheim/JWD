@@ -1,9 +1,10 @@
 package com.epam.jwd;
 
-import com.epam.jwd.action.*;
 import com.epam.jwd.additional.CreatorDotsFromFile;
-import com.epam.jwd.additional.HolderTetrahedron;
+import com.epam.jwd.additional.CreatorTetrahedron;
 import com.epam.jwd.entity.Tetrahedron;
+import com.epam.jwd.repository.Repository;
+import com.epam.jwd.repository.TetrahedronRepository;
 
 
 import java.io.IOException;
@@ -14,13 +15,25 @@ public class App {
     public static void main( String[] args ) throws IOException {
 
         CreatorDotsFromFile creatorDotsFromFile = new CreatorDotsFromFile();
+
         List a = creatorDotsFromFile.createDotsFromFile();
-        Tetrahedron tetrahedron = new Tetrahedron(a);
-        SurfaceAreaTetrahedron surfaceAreaTetrahedron = new SurfaceAreaTetrahedron();
-        System.out.println(surfaceAreaTetrahedron.calculateSurfaceAreaTetrahedron(tetrahedron));
-        VolumeTetrahedron volumeTetrahedron = new VolumeTetrahedron();
-        System.out.println(volumeTetrahedron.calculateVolumeTetrahedron(tetrahedron));
-        HolderTetrahedron holderTetrahedron = new HolderTetrahedron();
+
+
+        List dot = creatorDotsFromFile.getDotsForTetrahedrons();
+        System.out.println(dot.toString());
+
+
+        CreatorTetrahedron creatorTetrahedron = new CreatorTetrahedron(creatorDotsFromFile);
+
+
+        TetrahedronRepository.getTetrahedronRepository().sortById();
+
+
+        TetrahedronRepository.getTetrahedronRepository().sortByCoordinateXFirstDot();
+        System.out.println(TetrahedronRepository.getTetrahedronRepository().getTetrahedronList());
+
+        TetrahedronRepository.getTetrahedronRepository().sortByCoordinateYFirstDot();
+        System.out.println(TetrahedronRepository.getTetrahedronRepository().getTetrahedronList());
 
 
     }

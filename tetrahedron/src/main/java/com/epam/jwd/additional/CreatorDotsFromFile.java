@@ -1,5 +1,7 @@
 package com.epam.jwd.additional;
 
+import com.epam.jwd.entity.ShapeTetrahedron;
+import com.epam.jwd.entity.Tetrahedron;
 import com.epam.jwd.exception.TetrahedronException;
 import com.epam.jwd.entity.Dot;
 import com.epam.jwd.validations.Validation;
@@ -14,10 +16,16 @@ import java.util.List;
 public class CreatorDotsFromFile {
 
     private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+    private List dotsForTetrahedrons;
 
-    public List createDotsFromFile() throws IOException {
+    public CreatorDotsFromFile() {
+        dotsForTetrahedrons = new ArrayList();
+    }
 
-        List dotsTetrahedron = new ArrayList<>();
+    public List<Dot> createDotsFromFile() throws IOException {
+
+        List<Dot> dotsTetrahedron = new ArrayList<>();
+
         ReaderFileWithDots readerFileWithDots = new ReaderFileWithDots();
         List<String> lines = readerFileWithDots.toReadFileWithDots();
 
@@ -40,8 +48,16 @@ public class CreatorDotsFromFile {
             }
             dotsTetrahedron = dotsForTetrahedron;
             LOG.info("Tetrahedron's dots: {}",dotsTetrahedron);
+
+            if( dotsTetrahedron.size() != 0) {
+                dotsForTetrahedrons.add(dotsTetrahedron);
+            }
         }
 
         return dotsTetrahedron;
+    }
+
+    public List getDotsForTetrahedrons() {
+        return dotsForTetrahedrons;
     }
 }

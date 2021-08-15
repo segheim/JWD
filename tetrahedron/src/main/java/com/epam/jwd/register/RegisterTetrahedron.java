@@ -14,11 +14,10 @@ public class RegisterTetrahedron implements Observer{
 
     Integer indexTetrahedron = 0;
     private Map<Integer, List<Double>> register;
-    List<Double> parameters;
 
-    public RegisterTetrahedron(Map<Integer, List<Double>> register) {
+
+    public RegisterTetrahedron() {
         this.register = new HashMap<>();
-        parameters = new ArrayList<>();
     }
 
 
