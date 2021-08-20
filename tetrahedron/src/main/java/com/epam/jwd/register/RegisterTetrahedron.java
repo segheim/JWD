@@ -2,7 +2,6 @@ package com.epam.jwd.register;
 
 import com.epam.jwd.action.SurfaceAreaTetrahedron;
 import com.epam.jwd.action.VolumeTetrahedron;
-import com.epam.jwd.additional.CreatorDotsFromFile;
 import com.epam.jwd.entity.ShapeTetrahedron;
 import com.epam.jwd.entity.Tetrahedron;
 import org.apache.logging.log4j.LogManager;
@@ -40,6 +39,8 @@ public class RegisterTetrahedron implements Observer<Tetrahedron>{
 
     public void addTetrahedron(Tetrahedron tetrahedron) {
         register.put(tetrahedron.getTetrahedronId(), calculateParameters(tetrahedron));
+        LOG.info("Add tetrahedron to register {}", tetrahedron);
+
     }
 
     private List<Double> calculateParameters(ShapeTetrahedron tetrahedron) {
@@ -53,6 +54,7 @@ public class RegisterTetrahedron implements Observer<Tetrahedron>{
 
         parameters.add(surfaceArea);
         parameters.add(volume);
+        LOG.info("Calculate surface area and volume {}", parameters);
 
         return parameters;
     }

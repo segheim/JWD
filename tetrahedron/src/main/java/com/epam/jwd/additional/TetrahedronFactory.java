@@ -1,9 +1,8 @@
 package com.epam.jwd.additional;
 
-import com.epam.jwd.entity.ShapeTetrahedron;
+import com.epam.jwd.entity.Dot;
 import com.epam.jwd.entity.Tetrahedron;
 import com.epam.jwd.exception.TetrahedronException;
-import com.epam.jwd.entity.Dot;
 import com.epam.jwd.validations.Validation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,28 +11,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class CreatorDotsFromFile {
+public class TetrahedronFactory implements ShapeTetrahedronFactory {
 
     private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
-    private List dotsForTetrahedrons;
 
-    public CreatorDotsFromFile() {
-        dotsForTetrahedrons = new ArrayList();
+    List<Tetrahedron> tetrahedrons;
+
+    public TetrahedronFactory() {
+        tetrahedrons = new ArrayList<>();
     }
 
-    public List<Dot> createDotsFromFile() throws IOException {
+    @Override
+    public List<Tetrahedron> createTetrahedrons() throws IOException {
 
-        List<Dot> dotsTetrahedron = new ArrayList<>();
+        List<Dot> dotsTetrahedron;
 
         ReaderFileWithDots readerFileWithDots = new ReaderFileWithDots();
         List<String> lines = readerFileWithDots.toReadFileWithDots();
 
         for (String line : lines) {
+
             List dotsForTetrahedron = new ArrayList<>();
             String[] dots = line.split(" ");
+
             try {
-                if(Validation.validateData(dots)){
+                if (Validation.validateData(dots)) {
                     for (int i = 0; i < dots.length; i++) {
                         String[] dotCoordinates = dots[i].replaceAll("[,;()]", " ").trim().split(" ");
                         double x = Double.parseDouble(dotCoordinates[0]);
@@ -47,17 +49,12 @@ public class CreatorDotsFromFile {
 
             }
             dotsTetrahedron = dotsForTetrahedron;
-            LOG.info("Tetrahedron's dots: {}",dotsTetrahedron);
+            LOG.info("Tetrahedron's dots: {}", dotsTetrahedron);
 
-            if( dotsTetrahedron.size() != 0) {
-                dotsForTetrahedrons.add(dotsTetrahedron);
+            if (!dotsTetrahedron.isEmpty()) {
+                tetrahedrons.add(new Tetrahedron(dotsTetrahedron));
             }
         }
-
-        return dotsTetrahedron;
-    }
-
-    public List getDotsForTetrahedrons() {
-        return dotsForTetrahedrons;
+        return tetrahedrons;
     }
 }
