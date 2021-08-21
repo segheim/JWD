@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TetrahedronFactory implements ShapeTetrahedronFactory {
 
-    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+    private static final Logger LOG = LogManager.getLogger(TetrahedronFactory.class.getName());
 
     List<Tetrahedron> tetrahedrons;
 

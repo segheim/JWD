@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ReaderFileWithDots {
 
-    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+    private static final Logger LOG = LogManager.getLogger(ReaderFileWithDots.class.getName());
     File file = new File("data/info.txt");
 
     public List toReadFileWithDots() throws IOException {

@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class RegisterTetrahedron implements Observer<Tetrahedron>{
 
-    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+    private static final Logger LOG = LogManager.getLogger(RegisterTetrahedron.class.getName());
 
     private static RegisterTetrahedron registerTetrahedron;
     private Map<Integer, List<Double>> register;

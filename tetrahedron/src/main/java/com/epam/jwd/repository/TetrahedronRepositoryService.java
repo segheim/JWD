@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class TetrahedronRepositoryService implements Observable<Tetrahedron>, Repository<Tetrahedron>, ParametersShape<Double>, Specifications<Tetrahedron> {
 
-    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+    private static final Logger LOG = LogManager.getLogger(TetrahedronRepositoryService.class.getName());
 
     private List<Tetrahedron> tetrahedrons;
     private List<Observer> registers = new ArrayList<>();
