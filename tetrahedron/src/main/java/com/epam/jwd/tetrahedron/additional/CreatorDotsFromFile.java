@@ -1,7 +1,6 @@
-package com.epam.jwd.additional;
+package com.epam.jwd.tetrahedron.additional;
 
-import com.epam.jwd.TetrahedronException;
-import com.epam.jwd.entity.Dot;
+import com.epam.jwd.tetrahedron.entity.Dot;
 
 import java.io.IOException;
 import java.util.ArrayList;

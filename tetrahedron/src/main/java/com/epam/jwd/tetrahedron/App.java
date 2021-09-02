@@ -1,11 +1,11 @@
-package com.epam.jwd;
+package com.epam.jwd.tetrahedron;
 
-import com.epam.jwd.action.CheckerBaseTetrahedronOnCoordinatePlane;
-import com.epam.jwd.action.CheckerTetrahedron;
-import com.epam.jwd.action.SurfaceAreaTetrahedron;
-import com.epam.jwd.action.VolumeTetrahedron;
-import com.epam.jwd.additional.CreatorDotsFromFile;
-import com.epam.jwd.entity.Tetrahedron;
+import com.epam.jwd.tetrahedron.action.CheckerBaseTetrahedronOnCoordinatePlane;
+import com.epam.jwd.tetrahedron.action.CheckerTetrahedron;
+import com.epam.jwd.tetrahedron.action.SurfaceAreaTetrahedron;
+import com.epam.jwd.tetrahedron.action.VolumeTetrahedron;
+import com.epam.jwd.tetrahedron.additional.CreatorDotsFromFile;
+import com.epam.jwd.tetrahedron.entity.Tetrahedron;
 
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.epam.jwd;
+package com.epam.jwd.tetrahedron;
 
 public class TetrahedronException extends Exception{
     public TetrahedronException() {

@@ -1,7 +1,7 @@
-package com.epam.jwd.action;
+package com.epam.jwd.tetrahedron.action;
 
-import com.epam.jwd.entity.Dot;
-import com.epam.jwd.entity.Tetrahedron;
+import com.epam.jwd.tetrahedron.entity.Dot;
+import com.epam.jwd.tetrahedron.entity.Tetrahedron;
 
 import java.util.HashMap;
 import java.util.List;

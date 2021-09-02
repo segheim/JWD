@@ -1,4 +1,4 @@
-package com.epam.jwd.additional;
+package com.epam.jwd.tetrahedron.additional;
 
 import java.io.*;
 import java.util.ArrayList;

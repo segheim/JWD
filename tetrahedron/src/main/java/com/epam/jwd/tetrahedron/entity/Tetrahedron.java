@@ -1,4 +1,4 @@
-package com.epam.jwd.entity;
+package com.epam.jwd.tetrahedron.entity;
 
 import java.util.List;
 import java.util.Objects;
