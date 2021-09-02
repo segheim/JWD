@@ -30,10 +30,10 @@ public class TetrahedronRepositoryService implements Observable<Tetrahedron>, Re
     public List<Double> getAllVolume() {
 
         List<Double> volumes = new ArrayList<>();
+        VolumeTetrahedron volumeTetrahedron = new VolumeTetrahedron();
 
         for (Tetrahedron tetrahedron: tetrahedrons) {
-            VolumeTetrahedron volumeTetrahedron = new VolumeTetrahedron();
-            double volume = volumeTetrahedron.calculateVolumeTetrahedron(tetrahedron);
+            Double volume = volumeTetrahedron.calculateVolumeTetrahedron(tetrahedron);
             volumes.add(volume);
         }
         LOG.info("Tetrahedron's volumes {}", volumes);
@@ -44,10 +44,10 @@ public class TetrahedronRepositoryService implements Observable<Tetrahedron>, Re
     public List<Double> getAllSurfaceArea() {
 
         List<Double> surfaceAreas = new ArrayList<>();
+        SurfaceAreaTetrahedron surfaceAreaTetrahedron = new SurfaceAreaTetrahedron();
 
         for (Tetrahedron tetrahedron: tetrahedrons) {
-            SurfaceAreaTetrahedron surfaceAreaTetrahedron = new SurfaceAreaTetrahedron();
-            double surfaceArea = surfaceAreaTetrahedron.calculateSurfaceAreaTetrahedron(tetrahedron);
+            Double surfaceArea = surfaceAreaTetrahedron.calculateSurfaceAreaTetrahedron(tetrahedron);
             surfaceAreas.add(surfaceArea);
         }
         LOG.info("Tetrahedron's surfaceAreas {}", surfaceAreas);

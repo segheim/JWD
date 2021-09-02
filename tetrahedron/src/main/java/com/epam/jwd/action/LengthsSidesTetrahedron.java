@@ -11,12 +11,15 @@ public class LengthsSidesTetrahedron {
 
     public Map calculateLengthsSidesTetrahedron(Tetrahedron tetrahedron){
 
+
+
         List<Dot> dots = tetrahedron.getVertexDots();
+        System.out.println(dots);
         double sideA = calculateSide(dots.get(0), dots.get(1));
         double sideB = calculateSide(dots.get(0), dots.get(2));
         double sideC = calculateSide(dots.get(1), dots.get(2));
         double sideD = calculateSide(dots.get(2), dots.get(3));
-        double sideE = calculateSide(dots.get(1), dots.get(3));;
+        double sideE = calculateSide(dots.get(1), dots.get(3));
         double sideH = calculateSide(dots.get(0), dots.get(3));
 
         Map<String, Double> lengthSides = new HashMap<>();

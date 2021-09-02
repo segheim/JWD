@@ -5,7 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Validation {
-    private static final Logger LOG = LogManager.getLogger(CreatorDotsFromFile.class.getName());
+    private static final Logger LOG = LogManager.getLogger(Validation.class.getName());
 
     public static boolean validateData(String[] dotsData) throws TetrahedronException {
 

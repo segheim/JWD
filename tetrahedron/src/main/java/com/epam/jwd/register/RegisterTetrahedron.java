@@ -19,7 +19,6 @@ public class RegisterTetrahedron implements Observer<Tetrahedron>{
     private static RegisterTetrahedron registerTetrahedron;
     private Map<Integer, List<Double>> register;
 
-
     private RegisterTetrahedron() {
         this.register = new HashMap<>();
     }
@@ -40,7 +39,6 @@ public class RegisterTetrahedron implements Observer<Tetrahedron>{
     public void addTetrahedron(Tetrahedron tetrahedron) {
         register.put(tetrahedron.getTetrahedronId(), calculateParameters(tetrahedron));
         LOG.info("Add tetrahedron to register {}", tetrahedron);
-
     }
 
     private List<Double> calculateParameters(ShapeTetrahedron tetrahedron) {
